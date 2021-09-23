@@ -9,14 +9,14 @@ const headers = new HttpHeaders({ 'X-Api-key': environment.apiKey });
   providedIn: 'root',
 })
 export class NewsService {
-  headLinesPage = 0;
+  headLinesPage = -1;
   currentCategory = '';
-  pageCategory = 0;
+  pageCategory = -1;
   constructor(private http: HttpClient) {}
 
   private executeQuery<T>(query: string): Observable<T> {
     query = environment.apiUrl + query;
-    return this.http.get<T>(query, { headers });
+    return this.http.get<T>(query);
   }
 
   /**
@@ -28,7 +28,7 @@ export class NewsService {
   getTopHeadLines(): Observable<ResponseTopHeadlines> {
     this.headLinesPage++;
     return this.executeQuery<ResponseTopHeadlines>(
-      `/top-headlines?country=us&page=${this.headLinesPage}`
+      `/news?access_key=${environment.apiKey}&countries=us,au&offset=${this.headLinesPage}`
     );
   }
 
@@ -43,12 +43,12 @@ export class NewsService {
     if (this.currentCategory === category) {
       this.pageCategory++;
     } else {
-      this.pageCategory = 1;
+      this.pageCategory = 0;
       this.currentCategory = category;
     }
 
     return this.executeQuery<ResponseTopHeadlines>(
-      `/top-headlines?country=us&category=${category}&page=${this.pageCategory}`
+      `/news?access_key=${environment.apiKey}&categories=${category}&countries=us,au&offset=${this.pageCategory}`
     );
   }
 }

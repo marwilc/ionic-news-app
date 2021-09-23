@@ -1,21 +1,24 @@
-export interface ResponseTopHeadlines {
-  status: string;
-  totalResults: number;
-  articles: Article[];
+export interface Pagination {
+  limit: number;
+  offset: number;
+  count: number;
+  total: number;
 }
 
 export interface Article {
-  source: Source;
-  author?: string;
+  author: string;
   title: string;
-  description?: string;
+  description: string;
   url: string;
-  urlToImage?: string;
-  publishedAt: string;
-  content?: string;
+  source: string;
+  image: string;
+  category: string;
+  language: string;
+  country: string;
+  published_at: string;
 }
 
-export interface Source {
-  id?: string;
-  name: string;
+export interface ResponseTopHeadlines {
+  pagination: Pagination;
+  data: Article[];
 }

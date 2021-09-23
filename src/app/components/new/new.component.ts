@@ -76,7 +76,7 @@ export class NewComponent implements OnInit {
     if (this._platform.is('capacitor')) {
       const shareRet = await Share.share({
         title: this.new.title,
-        text: this.new.source.name,
+        text: this.new.source,
         url: this.new.url,
         dialogTitle: 'Share with buddies',
       });
@@ -85,7 +85,7 @@ export class NewComponent implements OnInit {
         navigator
           .share({
             title: this.new.title,
-            text: this.new.source.name,
+            text: this.new.source,
             url: this.new.url,
           })
           .then(() => console.log('Successful share'))

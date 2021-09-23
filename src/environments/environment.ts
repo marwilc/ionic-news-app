@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiKey: '1de8e8611a71445f8f4aedd63ab208e4',
-  apiUrl: 'http://newsapi.org/v2',
+  apiKey: 'c16d110314264d6a6d0d95f25539132f',
+  apiUrl: 'http://api.mediastack.com/v1',
 };
 
 /*

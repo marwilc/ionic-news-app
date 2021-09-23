@@ -23,8 +23,8 @@ export class Tab2Page implements OnInit, AfterViewInit, OnDestroy {
     'entertainment',
     'general',
     'health',
-    'sciences',
-    'ports',
+    'science',
+    'sports',
     'technology',
   ];
 
@@ -61,13 +61,13 @@ export class Tab2Page implements OnInit, AfterViewInit, OnDestroy {
   loadNews(category: string, event?) {
     this._subscription.add(
       this._news.getTopHeadlinesCategory(category).subscribe((resp) => {
-        if (resp.articles.length === 0) {
+        if (resp.data.length === 0) {
           event.target.disabled = true;
           event.target.complete();
           return;
         }
 
-        this.news.push(...resp.articles);
+        this.news.push(...resp.data);
 
         if (event) {
           event.target.complete();
