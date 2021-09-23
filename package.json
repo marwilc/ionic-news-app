@@ -8,6 +8,7 @@
     "start": "ng serve",
     "build": "ionic build --prod && npx cap sync",
     "build:service-worker": "ionic build --prod --service-worker",
+    "build:gh-pages": "ionic build --configuration gh-pages --service-worker",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
