@@ -13,7 +13,6 @@ import { Tab3Page } from './tab3.page';
     CommonModule,
     FormsModule,
     ComponentsModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
   ],
   declarations: [Tab3Page],
