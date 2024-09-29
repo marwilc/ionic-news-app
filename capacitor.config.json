@@ -1,7 +1,6 @@
 {
   "appId": "io.marwilc.news",
   "appName": "news",
-  "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
