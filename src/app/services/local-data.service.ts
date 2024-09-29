@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
+import { Preferences } from '@capacitor/preferences';
 import { ToastController } from '@ionic/angular';
 import { Article } from '../interfaces/interfaces';
-
-const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root',
@@ -28,13 +26,13 @@ export class LocalDataService {
 
     if (!exist) {
       this.news.unshift(notice);
-      await Storage.set({ key: 'favorites', value: JSON.stringify(this.news) });
+      await Preferences.set({ key: 'favorites', value: JSON.stringify(this.news) });
     }
     this.presentToast('Add to favorites');
   }
 
   async loadFavorites() {
-    const { value } = await Storage.get({ key: 'favorites' });
+    const { value } = await Preferences.get({ key: 'favorites' });
 
     if (value) {
       this.news = JSON.parse(value);
@@ -43,7 +41,7 @@ export class LocalDataService {
 
   async deleteNew(notice: Article) {
     this.news = this.news.filter((n) => n.title !== notice.title);
-    await Storage.set({ key: 'favorites', value: JSON.stringify(this.news) });
+    await Preferences.set({ key: 'favorites', value: JSON.stringify(this.news) });
     this.presentToast('Delete from favorites');
   }
 }

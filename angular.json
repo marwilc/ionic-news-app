@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "defaultProject": "app",
   "newProjectRoot": "projects",
   "projects": {
     "app": {
@@ -36,6 +35,14 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -86,29 +93,29 @@
                 }
               ]
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": {}
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "buildTarget": "app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "buildTarget": "app:build:production"
             },
-            "ci": {
-              "progress": false
-            }
-          }
+            "development": {
+              "buildTarget": "app:build:development"
+            },
+            "ci": {}
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "buildTarget": "app:build"
           }
         },
         "test": {
@@ -195,8 +202,7 @@
     }
   },
   "cli": {
-    "analytics": false,
-    "defaultCollection": "@ionic/angular-toolkit"
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

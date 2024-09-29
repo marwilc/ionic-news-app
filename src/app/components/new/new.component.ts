@@ -64,7 +64,6 @@ export class NewComponent implements OnInit {
           icon: 'close',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
           },
         },
       ],
@@ -88,8 +87,7 @@ export class NewComponent implements OnInit {
             text: this.new.source,
             url: this.new.url,
           })
-          .then(() => console.log('Successful share'))
-          .catch((error) => console.log('Error sharing', error));
+          .then()
       }
     }
   }

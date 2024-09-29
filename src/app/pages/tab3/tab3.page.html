@@ -9,12 +9,12 @@
 
 <ion-content [fullscreen]="true">
 
-    <ion-slides *ngIf="dataLocal.news.length === 0"
+    <swiper-container *ngIf="dataLocal.news.length === 0"
                 [options]="slideOpt">
-        <ion-slide>
+        <swiper-slide>
             <h1>No favorites</h1>
-        </ion-slide>
-    </ion-slides>
+        </swiper-slide>
+    </swiper-container>
     <app-news *ngIf="dataLocal.news.length > 0"
               [news]="dataLocal.news"
               [inFavorites]="true">

@@ -39,13 +39,11 @@ export class Tab2Page implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.segment);
     this.segment.value = this.categories[0];
     this.loadNews(this.categories[0]);
   }
 
   ngOnInit() {
-    console.log(this.segment);
   }
 
   onChangeSegment(event) {
@@ -55,7 +53,7 @@ export class Tab2Page implements OnInit, AfterViewInit, OnDestroy {
   }
 
   loadData(event) {
-    this.loadNews(this.segment.value, event);
+    this.loadNews(this.segment.value as string, event);
   }
 
   loadNews(category: string, event?) {
