@@ -1,4 +1,4 @@
-# Política de Privacidad — News App
+# Política de Privacidad — Noti App
 
 **Última actualización:** 16 de julio de 2025
 
